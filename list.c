@@ -1,18 +1,18 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-struct node{
+struct Node{
   int data;
-  struct node* next;
+  struct Node* next;
 };
 
-void append(struct node* head, int new_data){
-  struct node* new_node = malloc(sizeof(struct node));
+void append(struct Node* head, int new_data){
+  struct Node* new_node = malloc(sizeof(struct Node));
 
   new_node->data = new_data;
   new_node->next = NULL;
 
-  struct node* curr = head;
+  struct Node* curr = head;
 
   while(curr->next != NULL){
     curr = curr->next;
@@ -21,8 +21,8 @@ void append(struct node* head, int new_data){
   curr->next = new_node;
 }
 
-void push(struct node* head, int new_data){
-  struct node* new_node = malloc(sizeof(struct node));
+void push(struct Node* head, int new_data){
+  struct Node* new_node = malloc(sizeof(struct Node));
 
   new_node-> data = head-> data;
   new_node-> next = head-> next;
@@ -31,8 +31,8 @@ void push(struct node* head, int new_data){
   head-> next = new_node;
 }
 
-void print_list(struct node* head){
-  struct node* curr = head;
+void print_list(struct Node* head){
+  struct Node* curr = head;
 
   while(curr-> next != NULL){
     printf("%i\n", curr-> data);
@@ -40,9 +40,9 @@ void print_list(struct node* head){
   }
 }
 
-void remove_node(struct node* head, int item){
-  struct node* curr = head;
-  struct node* removed = NULL;
+void remove_node(struct Node* head, int item){
+  struct Node* curr = head;
+  struct Node* removed = NULL;
 
   while (curr->next != NULL){
     if (curr->next->data == item){
@@ -59,8 +59,8 @@ void remove_node(struct node* head, int item){
   return;
 }
 
-void search(struct node *head, int item){
-  struct node* curr = head;
+void search(struct Node *head, int item){
+  struct Node* curr = head;
   while (curr != NULL){
     if(curr->data == item){
       printf("a lista contem o item.");

@@ -1,0 +1,61 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+#define MAX_QUEUE_SIZE 100
+
+typedef struct Person Person;
+struct Person{
+    int idade;
+    int ID;
+};
+
+typedef struct queue queue;
+struct queue{
+    Person *items[MAX_QUEUE_SIZE];
+    int current_size;
+    int head;
+    int tail;
+};
+
+queue* create_queue()
+{
+    queue *new_queue = (queue*) malloc(sizeof(queue));
+    new_queue->current_size = 0;
+    new_queue->head = 0;
+    return new_queue;
+}
+
+void enqueue(queue *queue, int ID, int idade)
+{
+    if (queue->current_size >= MAX_QUEUE_SIZE) {
+        printf("Queue overflow");
+    } else {
+        Person *person = malloc(sizeof *person);
+        queue->tail = (queue->tail + 1) % MAX_QUEUE_SIZE;
+        queue->items[queue->tail] = person;
+        queue->current_size++;
+    }
+}
+
+int is_empty(queue *queue)
+{
+    return (queue->current_size == 0);
+}
+
+void dequeue(queue *queue)
+{
+    if (is_empty(queue)) {
+        printf("Queue underflow");
+        return NULL;
+    } else {
+        Person *dequeued = queue->items[queue->head];
+        queue->head = (queue->head + 1) % MAX_QUEUE_SIZE;
+        queue->current_size--;
+        return dequeued;
+    }
+}
+
+int main(int argc, char *argv[])
+{
+    
+}
